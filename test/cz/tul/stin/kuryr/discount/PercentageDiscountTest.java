@@ -1,0 +1,39 @@
+package cz.tul.stin.kuryr.discount;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class PercentageDiscountTest {
+    @Test
+    void shouldApply10PercentDiscount() {
+        PercentageDiscount discount = new PercentageDiscount(10);
+        assertEquals(90, discount.applyDiscount(100));
+    }
+
+    @Test
+    void shouldApply100PercentDiscount() {
+        PercentageDiscount discount = new PercentageDiscount(100);
+        assertEquals(0, discount.applyDiscount(100));
+    }
+
+    @Test
+    void shouldApply0PercentDiscount() {
+        PercentageDiscount discount = new PercentageDiscount(0);
+        assertEquals(100, discount.applyDiscount(100));
+    }
+
+    @Test
+    void shouldApplyDecimalPercentDiscount() {
+        PercentageDiscount discount = new PercentageDiscount(10);
+        assertEquals(89.991, discount.applyDiscount(99.99), 0.001);
+    }
+
+    @Test
+    void shouldThrowExceptionForInvalidDiscount() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new PercentageDiscount(-10));
+        assertThrows(IllegalArgumentException.class,
+                () -> new PercentageDiscount(150));
+    }
+}

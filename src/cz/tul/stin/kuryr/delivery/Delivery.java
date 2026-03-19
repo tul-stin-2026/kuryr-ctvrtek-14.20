@@ -16,6 +16,10 @@ public class Delivery {
                     ShippingMethod shippingMethod,
                     DiscountStrategy discountStrategy) {
 
+        if (weight < 0){
+            throw new IllegalArgumentException("Vaha musi byt kladna!");
+        }
+
         this.trackingNumber = trackingNumber;
         this.weight = weight;
         this.shippingMethod = shippingMethod;
