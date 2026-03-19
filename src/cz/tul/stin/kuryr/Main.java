@@ -59,6 +59,6 @@ public class Main {
         double price = service.createOrder(10);
 
         // Výpis výsledku (už se vypíše i uvnitř služby)
-        System.out.println("Finalní cena: " + price);
+        System.out.println("Finální cena: " + price);
     }
 }
