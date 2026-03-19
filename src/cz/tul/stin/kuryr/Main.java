@@ -1,6 +1,7 @@
 package cz.tul.stin.kuryr;
 
 import cz.tul.stin.kuryr.delivery.Delivery;
+import cz.tul.stin.kuryr.service.OrderService;
 import cz.tul.stin.kuryr.shipping.AirDelivery;
 import cz.tul.stin.kuryr.shipping.BikeDelivery;
 import cz.tul.stin.kuryr.shipping.TruckDelivery;
@@ -50,5 +51,14 @@ public class Main {
         System.out.println("Bike (" + d2.getTrackingNumber() + ", " + d2.getWeight() + " kg ): " + d2.calculatePrice());
         System.out.println("Air (" + d3.getTrackingNumber() + ", " + d3.getWeight() + " kg ): " + d3.calculatePrice());
         System.out.println("Truck Express s pojištěním (" + d4.getTrackingNumber() + ", " + d4.getWeight() + " kg ): " + d4.calculatePrice()); // Kompletní výpočet
+
+        // Vytvoření služby
+        OrderService service = new OrderService();
+
+        // Vytvoření objednávky (např. 10 kg)
+        double price = service.createOrder(10);
+
+        // Výpis výsledku (už se vypíše i uvnitř služby)
+        System.out.println("Finalní cena: " + price);
     }
 }
